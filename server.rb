@@ -1,4 +1,4 @@
-require 'socket'                                    # Require socket from Ruby Standard Library (stdlib)
+require 'socket'
 
 host = 'localhost'
 port = 2000
@@ -15,6 +15,9 @@ loop do                                             # Server runs forever
   end
   puts lines                                        # Output the full request to stdout
 
-  client.puts(Time.now.ctime)                       # Output the current time to the client
+  filename = "index.html"
+  response = File.read(filename)
+
+  client.puts(response)                       # Output the current time to the client
   client.close                                      # Disconnect from the client
 end
